@@ -3,7 +3,7 @@ name: Actions Workflow
 on: #[push, pull_request]
   #push:
   schedule:
-    - cron: "1 * * * *"
+    - cron: "* * * * *"
   pull_request:
     types: [closed, assigned, opened, reopened]
 
