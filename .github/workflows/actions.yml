@@ -1,11 +1,23 @@
 name: Actions Workflow
 
-on: #[push, pull_request]
+on:
+  push:
+    branches:
+      - master
+      - 'feature/*' # matches feature/getA, matches feature/getB
+      - 'feature/**' # matches feature/getA/a
+      - '!feature/featC' # This branch will be ignored. It must be at the end
+    tags:
+      - v1.*
+    #paths: This will only run if you commit a js file
+    #  - '**.js'
+
+  #[push, pull_request]
   #push:
-  schedule:
-    - cron: "*/15 * * * *"
-  pull_request:
-    types: [closed, assigned, opened, reopened]
+  #schedule:
+  #  - cron: "*/15 * * * *"
+  #pull_request:
+  #  types: [closed, assigned, opened, reopened]
 
 jobs:
   run-github-actions:
